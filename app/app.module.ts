@@ -14,6 +14,8 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { HeroSearchComponent } from './hero-search.component';
 import { HeroService } from './hero.service';
 
+import { SuperHeroFormComponent } from './super-hero-form.component';
+
 import { RouterModule} from '@angular/router';
 
 import './rxjs-extensions';
@@ -27,7 +29,7 @@ import './rxjs-extensions';
                   HttpModule,
                   InMemoryWebApiModule.forRoot(InMemoryDataService)
                 ],
-  declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent ],
+  declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent, SuperHeroFormComponent ],
   bootstrap:    [ AppComponent ],
   providers:    [ HeroService ]
 })
