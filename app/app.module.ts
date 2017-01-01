@@ -13,6 +13,11 @@ import { DashboardComponent } from './dashboard.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroSearchComponent } from './hero-search.component';
 import { HeroService } from './hero.service';
+import { Logger } from './logger.service';
+import { EvenBetterLogger } from './even-better-logger.service';
+import { UserService } from './user.service';
+
+import { APP_CONFIG, HERO_DI_CONFIG } from './app.config';
 
 import { SuperHeroFormComponent } from './super-hero-form.component';
 
@@ -31,6 +36,6 @@ import './rxjs-extensions';
                 ],
   declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent, SuperHeroFormComponent ],
   bootstrap:    [ AppComponent ],
-  providers:    [ HeroService ]
+  providers:    [ HeroService, UserService, /*Logger*/, {provide: Logger, useClass: EvenBetterLogger} , {provide: APP_CONFIG, useValue: HERO_DI_CONFIG} ]
 })
 export class AppModule { }

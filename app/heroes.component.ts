@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Hero } from './hero';
-import { HeroService } from './hero.service'
+import { HeroService } from './hero.service';
+import { Logger } from './logger.service';
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,7 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   heroes: Hero[];
 
-  constructor(private heroService: HeroService, private router: Router) { }
+  constructor(private heroService: HeroService, private router: Router, private logger: Logger) { }
 
   ngOnInit(): void {
     this.getHeroes();
@@ -22,6 +23,9 @@ export class HeroesComponent implements OnInit {
 
   onClick(hero: Hero): void {
     this.selectedHero = hero;
+
+    //for testing dependency injection only
+    this.logger.dump();
 
   }
 

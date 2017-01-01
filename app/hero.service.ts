@@ -4,6 +4,8 @@ import { Hero } from './hero';
 
 import { Headers, Http } from '@angular/http';
 
+import { Logger } from './logger.service';
+
 import 'rxjs/add/operator/toPromise';
 
 
@@ -13,7 +15,7 @@ export class HeroService {
   private heroesUrl = 'api/heroes';
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private logger: Logger) { }
 
   getHeroes(): Promise<Hero[]> {
     //return Promise.resolve(HEROES);
@@ -30,6 +32,7 @@ export class HeroService {
 
   getHero(id: number): Promise<Hero> {
 
+    this.logger.log(`Getting details for hero with id ${id}`);
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
