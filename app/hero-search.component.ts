@@ -1,4 +1,4 @@
-import { Component, OnInit }   from '@angular/core';
+import { Component, OnInit, EventEmitter, Output }   from '@angular/core';
 import { Router }              from '@angular/router';
 import { Observable }          from 'rxjs/Observable';
 import { Subject }             from 'rxjs/Subject';
@@ -16,6 +16,10 @@ import { Hero } from './hero';
 export class HeroSearchComponent implements OnInit {
   heroes: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
+
+   @Output() detailRequest: EventEmitter<Hero> = new EventEmitter<Hero>();
+
+
 
   constructor(
     private heroSearchService: HeroSearchService,
@@ -43,7 +47,9 @@ export class HeroSearchComponent implements OnInit {
       });
   }
   gotoDetail(hero: Hero): void {
+    this.detailRequest.emit(hero);
     let link = ['/detail', hero.id];
     this.router.navigate(link);
+
   }
 }

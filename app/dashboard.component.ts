@@ -13,6 +13,9 @@ export class DashboardComponent implements OnInit{
   heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) {}
+  manageCustomEvent(payload: Hero): void {
+    console.log("Event receiver for hero: " + payload.name);
+  }
 
   ngOnInit(): void {
     this.heroService.getHeroes().then(heroes => this.heroes = heroes.slice(1, 5));
